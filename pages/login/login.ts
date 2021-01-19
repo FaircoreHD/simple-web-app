@@ -3,7 +3,8 @@
 let content = document.getElementById("content");
 let btnBack = new Hyperlink("Kembali", "../../index.html", "btn btn-info");
 let btnLogin = new Button("Login", "submit");
-let inputEmail = new InputForm("email", "Masukkan email anda");
+let inputEmail = new InputForm("email", "Masukkan email anda", "form-control");
+let inputPassword = new InputForm("password", "Masukkan password anda", "form-control");
 
 
 content.innerHTML = `
@@ -12,15 +13,12 @@ content.innerHTML = `
             <div class="col-md-3 p-3 m-auto my-auto">
                 <form>
                     <div class="form-group">
-                        <label for="exampleInputEmail1">Email</label>
-                        
-                        ${inputEmail.generate()}
-                        <small id="emailHelp" class="form-text text-muted"></small>
+                        <label for="email">Email</label>
+                        ${inputEmail.generate("email")}
                     </div>
                     <div class="form-group">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                        <small id="emailHelp" class="form-text text-muted"></small>
+                        <label for="password">Password</label>
+                        ${inputPassword.generate("password")}
                     </div>
                     ${btnLogin.generate("validateLogin", "onClick")}
                     ${btnBack.generate()}
@@ -29,4 +27,16 @@ content.innerHTML = `
         </div>    
     </div>
 `;
+
+
+function validateLogin() {
+    let email = (<HTMLInputElement>document.getElementById("email")).value;
+    let password = (<HTMLInputElement>document.getElementById("password")).value;
+
+    let validate = new Auth(email, password);
+
+    if(validate.validate() == true) {
+        window.location.href = "../transaksi/transaksiPage.html";
+    }
+}
 

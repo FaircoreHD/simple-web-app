@@ -6,7 +6,7 @@ class Button {
     constructor(label: string , type: string = "button", selector: string = "primary") {
         this.type = type;
         this.label = label;
-        
+
     }
 
     generate(callback: string = null, event: string = null) {
@@ -45,34 +45,33 @@ class InputForm {
         this.selector = selector;
     }
 
-    generate() {
-        return `<input class="${this.selector}" type="${this.type}" placeholder="${this.placeholder}">`;
+    generate(name: string = null) {
+        if(name == null) {
+            return `<input class="${this.selector}" type="${this.type}" placeholder="${this.placeholder}">`;
+        } else {
+            return `<input class="${this.selector}" id="${name}" type="${this.type}" placeholder="${this.placeholder}">`;
+        }
     }
 }
 
 
 class Auth {
-    username:string;
+    validEmail:string = "user12@gmail.com";
+    validPassword:string = "pwuser12";
+    email:string;
     password:string;
-    form:string;
 
-    constructor(form:string = '') {
-        this.form = form;
+    constructor(email:string = "", password:string = "") {
+        this.email = email;
+        this.password = password;
     }
 
-    validate(username = '', password = '') {
-        if(username == '' || username !== this.username) {
-            return `<div class="">`;
-        }
-    }
-
-    loginSuccess() {
-        
-    }
-
-    loginFailed(type, msg) {
-        if(type == 'forbidden') {
-            return `<div class="">`;
+    validate() {
+        if(this.email !== this.validEmail || this.password !== this.validPassword) {
+            alert("Email atau Password salah!");
+            return;
+        } else {
+            return true;
         }
     }
 }
