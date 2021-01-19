@@ -1,7 +1,7 @@
 class Button {
-    type: string
-    label: string
-    selector: string;
+    protected type: string
+    protected label: string
+    protected selector: string;
 
     constructor(label: string , type: string = "button", selector: string = "primary") {
         this.type = type;
@@ -19,9 +19,9 @@ class Button {
 }
 
 class Hyperlink {
-    label: string;
-    href: string;
-    selector: string;
+    protected label: string;
+    protected href: string;
+    protected selector: string;
 
     constructor(label: string , href: string = "#", selector: string = "") {
         this.label = label;
@@ -35,9 +35,9 @@ class Hyperlink {
 }
 
 class InputForm {
-    type: string;
-    placeholder: string;
-    selector: string;
+    protected type: string;
+    protected placeholder: string;
+    protected selector: string;
 
     constructor(type: string = "text", placeholder: string = "", selector: string = "") {
         this.type = type;
@@ -56,10 +56,10 @@ class InputForm {
 
 
 class Auth {
-    validEmail:string = "user12@gmail.com";
-    validPassword:string = "pwuser12";
-    email:string;
-    password:string;
+    protected validEmail:string = "user12@gmail.com";
+    protected validPassword:string = "pwuser12";
+    protected email:string;
+    protected password:string;
 
     constructor(email:string = "", password:string = "") {
         this.email = email;

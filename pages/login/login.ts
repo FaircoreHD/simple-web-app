@@ -9,7 +9,7 @@ let inputPassword = new InputForm("password", "Masukkan password anda", "form-co
 
 content.innerHTML = `
     <div class="container">
-        <div class="row mt-4">
+        <div class="row mt-4 mb-4">
             <div class="col-md-3 p-3 m-auto my-auto">
                 <form>
                     <div class="form-group">
@@ -37,8 +37,7 @@ function validateLogin() {
 
     if(validate.validate() == true) {
         console.log("berhasil");
-        window.location.href = "../transaksi/transaksiPage.html";
-        // location.replace("../transaksi/transaksiPage.html");
+        window.location.href = "../pemesanan/pemesananPage.html";
     }
 }
 
