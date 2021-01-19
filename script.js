@@ -4,8 +4,15 @@ var Button = /** @class */ (function () {
         this.type = type;
         this.label = label;
     }
-    Button.prototype.generate = function () {
-        return "<button type=\"" + this.type + "\">" + this.label + "</button>";
+    Button.prototype.generate = function (callback, event) {
+        if (callback === void 0) { callback = null; }
+        if (event === void 0) { event = null; }
+        if (callback !== null && event !== null) {
+            return "<button class=\"btn btn-primary\" type=\"" + this.type + "\" " + event + "=\"" + callback + "()\">" + this.label + "</button>";
+        }
+        else {
+            return "<button class=\"btn btn-primary\" type=\"" + this.type + "\">" + this.label + "</button>";
+        }
     };
     return Button;
 }());

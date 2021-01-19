@@ -1,14 +1,20 @@
 class Button {
     type: string
     label: string
+    selector: string;
 
-    constructor(label: string , type: string = "button") {
+    constructor(label: string , type: string = "button", selector: string = "primary") {
         this.type = type;
         this.label = label;
+        
     }
 
-    generate() {
-        return `<button type="${this.type}">${this.label}</button>`;
+    generate(callback: string = null, event: string = null) {
+        if(callback !== null && event !== null) {
+            return `<button class="btn btn-primary" type="${this.type}" ${event}="${callback}()">${this.label}</button>`;
+        } else {
+            return `<button class="btn btn-primary" type="${this.type}">${this.label}</button>`;
+        }
     }
 }
 
@@ -31,14 +37,16 @@ class Hyperlink {
 class InputForm {
     type: string;
     placeholder: string;
+    selector: string;
 
-    constructor(type: string = "text", placeholder: string = "") {
+    constructor(type: string = "text", placeholder: string = "", selector: string = "") {
         this.type = type;
         this.placeholder = placeholder;
+        this.selector = selector;
     }
 
     generate() {
-        return `<input type="${this.type}" placeholder="${this.placeholder}">`;
+        return `<input class="${this.selector}" type="${this.type}" placeholder="${this.placeholder}">`;
     }
 }
 
