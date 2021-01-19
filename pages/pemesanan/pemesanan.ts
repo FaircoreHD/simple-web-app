@@ -2,7 +2,7 @@
 
 let content = document.getElementById("content");
 let btnBack = new Hyperlink("Kembali", "../../index.html", "btn btn-info");
-let btnSubmit = new Button("Submit", "button");
+let btnSubmit = new Button("Kirim Data", "button");
 let inputNama = new InputForm("text", "Nama Lengkap", "form-control");
 let inputAlamat = new InputForm("text", "Alamat Lengkap", "form-control");
 let inputNoTelp = new InputForm("text", "+62xx-xxxx-xxxx", "form-control");
@@ -56,14 +56,40 @@ content.innerHTML = `
 
 
 function prosesPesanan() {
-    let email = (<HTMLInputElement>document.getElementById("email")).value;
-    let password = (<HTMLInputElement>document.getElementById("password")).value;
+    let getNama = (<HTMLInputElement>document.getElementById("email")).value;
+    let getAlamat = (<HTMLInputElement>document.getElementById("alamat")).value;
+    let getNoTelp = (<HTMLInputElement>document.getElementById("noTelp")).value;
+    let getEmail = (<HTMLInputElement>document.getElementById("email")).value;
+    let getTipe = (<HTMLInputElement>document.getElementById("tipeDevice")).value;
+    let getKendala = (<HTMLInputElement>document.getElementById("kendala")).value;
 
-    let validate = new Auth(email, password);
+    let details = {
+        nama: getNama,
+        alamat: getAlamat,
+        noTelp: getNoTelp,
+        email: getEmail,
+        tipe: getTipe,
+        kendala: getKendala
+    };
 
-    if(validate.validate() == true) {
-        console.log("berhasil");
-        window.location.href = "../transaksi/transaksiPage.html";
+    let invoice = new Pemesanan();
+    let response = invoice.exportInvoice(details);
+
+    document.getElementById('content').hidden = true;
+    document.getElementById('invoice').innerHTML = response;
+    // if(validate.validate() == true) {
+    //     console.log("berhasil");
+    //     window.location.href = "../transaksi/transaksiPage.html";
+    // }
+}
+
+function generateNumber() {
+    const list:string = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+    let result = "";
+    for(let i = 0; i < list.length; i++) {
+        let char = Math.floor(Math.random() * list.length);
+        result = result + list.charAt(char);
     }
+    return result;
 }
 

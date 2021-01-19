@@ -54,6 +54,57 @@ class InputForm {
     }
 }
 
+class Pemesanan {
+    protected invoice:string;
+
+    exportInvoice(details:object = {}) {
+        this.invoice = `
+        <div class="container">
+            <div class="row mt-4 mb-4">
+                <div class="col-md-6 p-3 m-auto my-auto">
+                    <form>
+                        <div class="alert alert-info" role="alert">
+                            <p class="mb-2">Silahkan menyalin kode INVOICE di bawah ini, untuk kemdian ditunjukkan kepada pihak service</p>
+                        </div>
+                        <div class="form-group row">
+                            <label for="colFormLabelLg" class="col-sm-2 col-form-label">INVOICE</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="colFormLabelLg" placeholder="col-form-label-lg">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6">
+                                <button type="button" class="btn btn-primary">Lakukan Pemesanan Kembali</button>
+                            </div>
+                            <div class="col-sm-6">
+                                <button type="button" class="btn btn-info">Kembali ke Halaman Awal</button>
+                            </div>
+                        </div>
+        `;
+        // for(let detail of details) {
+
+        // }
+        this.invoice += `
+                    </form>
+                </div>
+            </div>
+        </div>
+        `;
+        let result = this.invoice;
+        return result;
+    }
+
+    generateNumber() {
+        const list:string = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+        let result = "";
+        for(let i = 0; i < list.length; i++) {
+            let char = Math.floor(Math.random() * list.length);
+            result = result + list.charAt(char);
+        }
+        return result;
+    }
+}
+
 
 class Auth {
     protected validEmail:string = "user12@gmail.com";

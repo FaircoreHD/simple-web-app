@@ -50,6 +50,29 @@ var InputForm = /** @class */ (function () {
     };
     return InputForm;
 }());
+var Pemesanan = /** @class */ (function () {
+    function Pemesanan() {
+    }
+    Pemesanan.prototype.exportInvoice = function (details) {
+        if (details === void 0) { details = {}; }
+        this.invoice = "\n        <div class=\"container\">\n            <div class=\"row mt-4 mb-4\">\n                <div class=\"col-md-6 p-3 m-auto my-auto\">\n                    <form>\n                        <div class=\"alert alert-info\" role=\"alert\">\n                            <p class=\"mb-2\">Silahkan menyalin kode INVOICE di bawah ini, untuk kemdian ditunjukkan kepada pihak service</p>\n                        </div>\n                        <div class=\"form-group row\">\n                            <label for=\"colFormLabelLg\" class=\"col-sm-2 col-form-label\">INVOICE</label>\n                            <div class=\"col-sm-10\">\n                                <input type=\"email\" class=\"form-control\" id=\"colFormLabelLg\" placeholder=\"col-form-label-lg\">\n                            </div>\n                        </div>\n                        <div class=\"form-group row\">\n                            <div class=\"col-sm-6\">\n                                <button type=\"button\" class=\"btn btn-primary\">Lakukan Pemesanan Kembali</button>\n                            </div>\n                            <div class=\"col-sm-6\">\n                                <button type=\"button\" class=\"btn btn-info\">Kembali ke Halaman Awal</button>\n                            </div>\n                        </div>\n        ";
+        // for(let detail of details) {
+        // }
+        this.invoice += "\n                    </form>\n                </div>\n            </div>\n        </div>\n        ";
+        var result = this.invoice;
+        return result;
+    };
+    Pemesanan.prototype.generateNumber = function () {
+        var list = "ABCDEFGHIJKLMNPQRSTUVWXYZ123456789";
+        var result = "";
+        for (var i = 0; i < list.length; i++) {
+            var char = Math.floor(Math.random() * list.length);
+            result = result + list.charAt(char);
+        }
+        return result;
+    };
+    return Pemesanan;
+}());
 var Auth = /** @class */ (function () {
     function Auth(email, password) {
         if (email === void 0) { email = ""; }
