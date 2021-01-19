@@ -1,43 +1,47 @@
-class Component {
-    tipe:string;
-    nmSelector:string;
+class Button {
+    type: string
+    label: string
 
-    constructor(selector, name) {
-        this.tipe = selector;
-        this.nmSelector = name;
+    constructor(label: string , type: string = "button") {
+        this.type = type;
+        this.label = label;
     }
 
-    // createElemet(tag, text, attribute = []) {
-    //     let element = document.createElement(`${tag}`);
-    //     element.textContent = text;
-    //     if(attribute !== []) {
-    //         for(let attr of attribute) {
-    //             // element.setAttribute(`${Object.keys(attr)}`, `${Object.values(attr)}`);
-    //             element.setAttribute(`${Object.keys(attr)}`, ``);
-    //             console.log();
-    //         }
-    //         Object.keys(attribute).forEach((key) => {
-    //             console.log(key);
-    //         });
-    //     }
-    //     document.appendChild(element);
-    // }
-
-    show() {
-        let element = this.nmSelector;
-        
-    }
-
-    hide() {
-
+    generate() {
+        return `<button type="${this.type}">${this.label}</button>`;
     }
 }
 
-class Form extends Component {
+class Hyperlink {
+    label: string;
+    href: string;
+    selector: string;
 
+    constructor(label: string , href: string = "#", selector: string = "") {
+        this.label = label;
+        this.href = href;
+        this.selector = selector;
+    }
 
-
+    generate() {
+        return `<a href="${this.href}" class="${this.selector}">${this.label}</a>`;
+    }
 }
+
+class InputForm {
+    type: string;
+    placeholder: string;
+
+    constructor(type: string = "text", placeholder: string = "") {
+        this.type = type;
+        this.placeholder = placeholder;
+    }
+
+    generate() {
+        return `<input type="${this.type}" placeholder="${this.placeholder}">`;
+    }
+}
+
 
 class Auth {
     username:string;
@@ -63,5 +67,4 @@ class Auth {
             return `<div class="">`;
         }
     }
-
 }

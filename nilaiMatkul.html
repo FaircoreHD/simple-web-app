@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Daftar Rangking Otomatis</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <style>
+        body {
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        #table, #rangking {
+            border-collapse: collapse;
+            margin-top: 50px;
+        }
+
+        #table tr th, #table tr td, #rangking tr th, #rangking tr td{
+            padding: 10px;
+        }
+    </style>
+    <script src='script2.js'></script>
+</head>
+<body>
+    <h2>Menentukan Siswa Dengan Nilai Terbesar Pada Setiap Matkul</h2>
+    <p>Masukkan Nama Siswa serta 5 Nilai Matkul pada form berikut ini, tekan <b>Tentukan Nilai Tertinggi</b>
+    <br> untuk menentukan nilai terbesar untuk masing-masing Matkul</b></p>
+    <br>
+
+    <form>
+        <table>
+            <tr>
+                <td><label for="nmSiswa">Nama Siswa </label></td>
+                <td>: <input type="text" id="nmSiswa" placeholder="Inputkan Nama siswa" required></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+            </tr>
+            <tr>
+                <td><label for="besarIPK">Matematika </label></td>
+                <td>: <input type="number" id="math" placeholder="Nilai Matematika" required></td>
+            </tr>
+            <tr>
+                <td><label for="besarIPK">Agama </label></td>
+                <td>: <input type="number" id="religi" placeholder="Nilai Agama" required></td>
+            </tr>
+            <tr>
+                <td><label for="besarIPK">Bahasa Inggris </label></td>
+                <td>: <input type="number" id="bahasa" placeholder="Nilai Bahasa Inggris" required></td>
+            </tr>
+            <tr>
+                <td><label for="besarIPK">Algoritma Pemograman </label></td>
+                <td>: <input type="number" id="pemograman" placeholder="Nilai Alpro" required></td>
+            </tr>
+            <tr>
+                <td><label for="besarIPK">Basis Data </label></td>
+                <td>: <input type="number" id="database" placeholder="Nilai Basis Data" required></td>
+            </tr>
+        </table>
+        <br>
+        <div>
+            <input type="button" onclick="inputData()" value="Tambahkan Siswa">
+            <input type="button" onclick="filter()" value="Tentukan Nilai Tertinggi">
+            <input type="reset" value="Reset Form">
+        </div>
+    </form>
+
+    <table id="table" border="1">
+        <tr>
+            <th>No</th>
+            <th>Nama Siswa</th>
+            <th>Matematika</th>
+            <th>Agama</th>
+            <th>Bahasa Inggris</th>
+            <th>Algoritma Pemograman</th>
+            <th>Basis Data</th>
+            <th>Nilai Rerata</th>
+        </tr>
+    </table>
+    <br>
+    <br>
+    <br>
+
+    <h4>Daftar Siswa dengan nilai terbesar untuk masing-masing Matkul :</h4>
+    <table>
+        <tr>
+            <td>Matematika </td>
+            <td>:</td>
+            <td id="mtk"></td>
+        </tr>
+        <tr>
+            <td>Agama </td>
+            <td>:</td>
+            <td id="agama"></td>
+        </tr>
+        <tr>
+            <td>Bahasa Inggris </td>
+            <td>:</td>
+            <td id="bing"></td>
+        </tr>
+        <tr>
+            <td>Algoritma Pemograman </td>
+            <td>:</td>
+            <td id="alpro"></td>
+        </tr>
+        <tr>
+            <td>Basis Data </td>
+            <td>:</td>
+            <td id="bdata"></td>
+        </tr>
+    </table>
+    <br>
+
+    <h4>List Peringkat :</h4>
+    <table id="rangking" style="margin-top: 10px !important;" border="1">
+        <tr>
+            <th>No</th>
+            <th>Nama Siswa</th>
+            <th>Nilai Rerata</th>
+            <th>Keterangan</th>
+        </tr>
+    </table>
+
+</body>
+</html>
