@@ -6,14 +6,14 @@ class Button {
     constructor(label: string , type: string = "button", selector: string = "primary") {
         this.type = type;
         this.label = label;
-
+        this.selector = selector;
     }
 
     generate(callback: string = null, event: string = null) {
         if(callback !== null && event !== null) {
-            return `<button class="btn btn-primary" type="${this.type}" ${event}="${callback}()">${this.label}</button>`;
+            return `<button class="btn btn-${this.selector}" type="${this.type}" ${event}="${callback}()">${this.label}</button>`;
         } else {
-            return `<button class="btn btn-primary" type="${this.type}">${this.label}</button>`;
+            return `<button class="btn btn-${this.selector}" type="${this.type}">${this.label}</button>`;
         }
     }
 }
