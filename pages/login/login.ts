@@ -2,7 +2,7 @@
 
 let content = document.getElementById("content");
 let btnBack = new Hyperlink("Kembali", "../../index.html", "btn btn-info");
-let btnLogin = new Button("Login", "submit");
+let btnLogin = new Button("Login", "button");
 let inputEmail = new InputForm("email", "Masukkan email anda", "form-control");
 let inputPassword = new InputForm("password", "Masukkan password anda", "form-control");
 
@@ -36,7 +36,9 @@ function validateLogin() {
     let validate = new Auth(email, password);
 
     if(validate.validate() == true) {
+        console.log("berhasil");
         window.location.href = "../transaksi/transaksiPage.html";
+        // location.replace("../transaksi/transaksiPage.html");
     }
 }
 
