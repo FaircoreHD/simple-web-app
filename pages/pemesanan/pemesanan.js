@@ -25,7 +25,7 @@ function prosesPesanan() {
         kendala: getKendala
     };
     var invoice = new Pemesanan();
-    var response = invoice.exportInvoice(details);
+    var response = invoice.exportInvoice();
     document.getElementById('content').hidden = true;
     document.getElementById('invoice').innerHTML = response;
     // if(validate.validate() == true) {

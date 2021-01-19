@@ -39,12 +39,17 @@ var InputForm = /** @class */ (function () {
         this.placeholder = placeholder;
         this.selector = selector;
     }
-    InputForm.prototype.generate = function (name) {
+    InputForm.prototype.generate = function (name, readonly, value) {
         if (name === void 0) { name = null; }
+        if (readonly === void 0) { readonly = false; }
+        if (value === void 0) { value = ""; }
         if (name == null) {
             return "<input class=\"" + this.selector + "\" type=\"" + this.type + "\" placeholder=\"" + this.placeholder + "\">";
         }
         else {
+            if (readonly == true && value !== "") {
+                return "<input class=\"" + this.selector + "\" id=\"" + name + "\" type=\"" + this.type + "\" placeholder=\"" + this.placeholder + "\" value=\"" + value + "\" readonly>";
+            }
             return "<input class=\"" + this.selector + "\" id=\"" + name + "\" type=\"" + this.type + "\" placeholder=\"" + this.placeholder + "\">";
         }
     };
@@ -53,9 +58,12 @@ var InputForm = /** @class */ (function () {
 var Pemesanan = /** @class */ (function () {
     function Pemesanan() {
     }
-    Pemesanan.prototype.exportInvoice = function (details) {
-        if (details === void 0) { details = {}; }
-        this.invoice = "\n        <div class=\"container\">\n            <div class=\"row mt-4 mb-4\">\n                <div class=\"col-md-6 p-3 m-auto my-auto\">\n                    <form>\n                        <div class=\"alert alert-info\" role=\"alert\">\n                            <p class=\"mb-2\">Silahkan menyalin kode INVOICE di bawah ini, untuk kemdian ditunjukkan kepada pihak service</p>\n                        </div>\n                        <div class=\"form-group row\">\n                            <label for=\"colFormLabelLg\" class=\"col-sm-2 col-form-label\">INVOICE</label>\n                            <div class=\"col-sm-10\">\n                                <input type=\"email\" class=\"form-control\" id=\"colFormLabelLg\" placeholder=\"col-form-label-lg\">\n                            </div>\n                        </div>\n                        <div class=\"form-group row\">\n                            <div class=\"col-sm-6\">\n                                <button type=\"button\" class=\"btn btn-primary\">Lakukan Pemesanan Kembali</button>\n                            </div>\n                            <div class=\"col-sm-6\">\n                                <button type=\"button\" class=\"btn btn-info\">Kembali ke Halaman Awal</button>\n                            </div>\n                        </div>\n        ";
+    Pemesanan.prototype.exportInvoice = function () {
+        var kode = new InputForm("text", "", "form-control");
+        var inputKode = kode.generate("", true, this.generateNumber());
+        var btnPesanKembali = new Hyperlink("Pesan Lagi", "pemesananPage.html", "btn btn-primary").generate();
+        var btnKembali = new Hyperlink("Kembali Ke Halaman Awal", "../../index.html", "btn btn-info").generate();
+        this.invoice = "\n        <div class=\"container\">\n            <div class=\"row mt-4 mb-4\">\n                <div class=\"col-md-6 p-3 m-auto my-auto\">\n                    <form>\n                        <div class=\"alert alert-info\" role=\"alert\">\n                            <p class=\"mb-2\">Silahkan menyalin kode INVOICE di bawah ini, untuk kemdian ditunjukkan kepada pihak service</p>\n                        </div>\n                        <div class=\"form-group row\">\n                            <label for=\"\" class=\"col-sm-2 col-form-label\">INVOICE</label>\n                            <div class=\"col-sm-10\">\n                                " + inputKode + "\n                            </div>\n                        </div>\n                        <div class=\"form-group row\">\n                            <div class=\"col-sm-6\">\n                                " + btnPesanKembali + "\n                            </div>\n                            <div class=\"col-sm-6\">\n                                " + btnKembali + "\n                            </div>\n                        </div>\n        ";
         // for(let detail of details) {
         // }
         this.invoice += "\n                    </form>\n                </div>\n            </div>\n        </div>\n        ";

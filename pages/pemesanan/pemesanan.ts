@@ -73,7 +73,7 @@ function prosesPesanan() {
     };
 
     let invoice = new Pemesanan();
-    let response = invoice.exportInvoice(details);
+    let response = invoice.exportInvoice();
 
     document.getElementById('content').hidden = true;
     document.getElementById('invoice').innerHTML = response;

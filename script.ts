@@ -45,10 +45,13 @@ class InputForm {
         this.selector = selector;
     }
 
-    generate(name: string = null) {
+    generate(name: string = null, readonly:boolean = false, value:string = "") {
         if(name == null) {
             return `<input class="${this.selector}" type="${this.type}" placeholder="${this.placeholder}">`;
         } else {
+            if(readonly == true && value !== "") {
+                return `<input class="${this.selector}" id="${name}" type="${this.type}" placeholder="${this.placeholder}" value="${value}" readonly>`;    
+            }
             return `<input class="${this.selector}" id="${name}" type="${this.type}" placeholder="${this.placeholder}">`;
         }
     }
@@ -57,7 +60,11 @@ class InputForm {
 class Pemesanan {
     protected invoice:string;
 
-    exportInvoice(details:object = {}) {
+    exportInvoice() {
+        let kode = new InputForm("text", "", "form-control");
+        let inputKode = kode.generate("", true, this.generateNumber());
+        let btnPesanKembali = new Hyperlink("Pesan Lagi", "pemesananPage.html", "btn btn-primary").generate();
+        let btnKembali = new Hyperlink("Kembali Ke Halaman Awal", "../../index.html", "btn btn-info").generate();
         this.invoice = `
         <div class="container">
             <div class="row mt-4 mb-4">
@@ -67,17 +74,17 @@ class Pemesanan {
                             <p class="mb-2">Silahkan menyalin kode INVOICE di bawah ini, untuk kemdian ditunjukkan kepada pihak service</p>
                         </div>
                         <div class="form-group row">
-                            <label for="colFormLabelLg" class="col-sm-2 col-form-label">INVOICE</label>
+                            <label for="" class="col-sm-2 col-form-label">INVOICE</label>
                             <div class="col-sm-10">
-                                <input type="email" class="form-control" id="colFormLabelLg" placeholder="col-form-label-lg">
+                                ${inputKode}
                             </div>
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6">
-                                <button type="button" class="btn btn-primary">Lakukan Pemesanan Kembali</button>
+                                ${btnPesanKembali}
                             </div>
                             <div class="col-sm-6">
-                                <button type="button" class="btn btn-info">Kembali ke Halaman Awal</button>
+                                ${btnKembali}
                             </div>
                         </div>
         `;
