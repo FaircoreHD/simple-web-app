@@ -6,7 +6,6 @@ class Button {
     constructor(label: string , type: string = "button", selector: string = "primary") {
         this.type = type;
         this.label = label;
-
     }
 
     generate(callback: string = null, event: string = null) {
@@ -88,9 +87,6 @@ class Pemesanan {
                             </div>
                         </div>
         `;
-        // for(let detail of details) {
-
-        // }
         this.invoice += `
                     </form>
                 </div>

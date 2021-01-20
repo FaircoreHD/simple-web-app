@@ -77,10 +77,6 @@ function prosesPesanan() {
 
     document.getElementById('content').hidden = true;
     document.getElementById('invoice').innerHTML = response;
-    // if(validate.validate() == true) {
-    //     console.log("berhasil");
-    //     window.location.href = "../transaksi/transaksiPage.html";
-    // }
 }
 
 function generateNumber() {
