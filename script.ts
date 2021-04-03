@@ -58,6 +58,7 @@ class InputForm {
 }
 
 class Pemesanan {
+    private tes:string;
     protected invoice:string;
 
     exportInvoice() {
